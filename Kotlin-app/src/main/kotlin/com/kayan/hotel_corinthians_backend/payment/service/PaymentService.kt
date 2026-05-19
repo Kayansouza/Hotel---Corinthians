@@ -56,12 +56,19 @@ class PaymentService(
     }
 
     private fun toResponse(payment: Payment): PaymentResponse {
+        val message = when (payment.status) {
+            PaymentStatus.PENDING -> "Pagamento criado com sucesso. Aguardando confirmação."
+            PaymentStatus.APPROVED -> "Pagamento aprovado com sucesso."
+            PaymentStatus.REFUSED -> "Pagamento recusado. Tente outro método de pagamento."
+        }
+
         return PaymentResponse(
             id = payment.id,
             reservationId = payment.reservationId,
             amount = payment.amount,
-            paymentMethod = payment.paymentMethod,
+            paymentMethod = payment.paymentMethod.name,
             status = payment.status.name,
+            message = message,
             createdAt = payment.createdAt,
             paidAt = payment.paidAt
         )

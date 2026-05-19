@@ -22,8 +22,9 @@ data class Payment(
     @Column(nullable = false)
     var status: PaymentStatus = PaymentStatus.PENDING,
 
+    @Enumerated(EnumType.STRING)
     @Column(name = "payment_method", nullable = false)
-    val paymentMethod: String,
+    val paymentMethod: PaymentMethod,
 
     @Column(name = "created_at", nullable = false)
     val createdAt: LocalDateTime = LocalDateTime.now(),

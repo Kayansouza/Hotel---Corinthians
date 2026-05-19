@@ -9,6 +9,7 @@ data class PaymentResponse(
     val amount: BigDecimal,
     val paymentMethod: String,
     val status: String,
+    val message: String,
     val createdAt: LocalDateTime,
     val paidAt: LocalDateTime?
 )

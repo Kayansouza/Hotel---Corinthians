@@ -1,11 +1,25 @@
 package com.kayan.hotel_corinthians_backend.model
 
 import jakarta.persistence.*
-import java.math.BigDecimal // Necessário para o DPE (Requisito 2.1)
+import java.math.BigDecimal
 
 @Entity
-class Room(
-    @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
+@Table(name = "rooms")
+data class Room(
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     val id: Long? = null,
-    val baseRate: BigDecimal = BigDecimal.ZERO // Esta linha mata o erro do PricingService!
+
+    @Column(nullable = false)
+    val number: String,
+
+    @Column(nullable = false)
+    val type: String,
+
+    @Column(name = "base_rate", nullable = false)
+    val baseRate: BigDecimal,
+
+    @Column(nullable = false)
+    val available: Boolean = true
 )

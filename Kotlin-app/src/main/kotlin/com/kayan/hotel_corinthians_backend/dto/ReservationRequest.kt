@@ -7,9 +7,9 @@ data class ReservationRequest(
     val roomId: Long,
     val guestName: String,
     val guestEmail: String,
-    val checkIn: LocalDateTime,  // Padrão ISO 8601
+    val checkIn: LocalDateTime,
     val checkOut: LocalDateTime,
-    val baseRate: BigDecimal,    // Valor base para o cálculo do DPE
-    val currency: String = "BRL", // Padrão ISO 4217
-    val isNearEvent: Boolean = false // Para o fator de proximidade de eventos
+    val baseRate: BigDecimal,
+    val currency: String = "BRL",
+    val isNearEvent: Boolean = false
 )
